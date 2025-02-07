@@ -41,7 +41,7 @@ There is also persistent storage in a history.txt file. Any new clients can read
 
 I wanted to write this software to increase my skill in networks. So I decided to build a simple chat application in the terminal.
 
-[Software Demo Video](https://youtu.be/UGaR3pt96kg)
+[Chat Application for Multiple Users](https://youtu.be/UGaR3pt96kg)
 
 # Network Communication
 
