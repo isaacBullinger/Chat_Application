@@ -2,7 +2,7 @@ import socket
 import sys
 import threading
 
-HOST, PORT = "192.168.1.139", 9999  # Sets host server IP and communication port
+HOST, PORT = "192.168.x.x", 9999  # Sets host server IP and communication port
 
 # Gets user name for introduction
 name = input("Please enter your name: ") 
