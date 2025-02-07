@@ -7,7 +7,8 @@ HOST, PORT = "192.168.1.139", 9999  # Sets host server IP and communication port
 # Gets user name for introduction
 name = input("Please enter your name: ") 
 
-print(f"Welcome to the chat {name}!\nOptions:\nType \"exit\" to exit.\n")
+# Gives a list of options to the new user
+print(f"Welcome to the chat {name}!\nOptions:\nType \"exit\" to exit.\nType \"clear\" to clear the chat history.")
 
 def receive_messages(sock):
     while True:
@@ -15,7 +16,9 @@ def receive_messages(sock):
             message = sock.recv(1024).decode("utf-8")
             if not message:
                 break
-            print(message)  # Display received messages
+
+            # Display received messages
+            print(message) 
         except:
             break
 

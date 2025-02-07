@@ -13,7 +13,10 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
 
         # Read the client's name first
         self.name = self.rfile.readline().strip().decode("utf-8")
-        print(f"[NEW CONNECTION] ({self.name}) connected")
+        connection = f"[NEW CONNECTION] ({self.name}) connected"
+        print(connection)
+
+        self.broadcast_all(connection)
 
         # Send history to new users
         self.send_history()
@@ -45,7 +48,9 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
         finally:
             # Remove client on disconnect
             self.clients.remove(self)
-            print(f"[DISCONNECTED] ({self.name}) disconnected")
+            disconnect = f"[DISCONNECTED] ({self.name}) disconnected"
+            self.broadcast_all(disconnect)
+            print(disconnect)
 
     def send_history(self):
         # Send previous messages to new client from file
@@ -67,6 +72,14 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
             if client != self:
                 client.wfile.write(bytes(formatted_message, "utf-8"))
                 client.wfile.flush()
+    
+
+    def broadcast_all(self, message):
+        # Send a message to all connected clients except the sender
+        formatted_message = message + "\n"
+        for client in self.clients:
+            client.wfile.write(bytes(formatted_message, "utf-8"))
+            client.wfile.flush()
 
 # Handling multiple clients
 class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):

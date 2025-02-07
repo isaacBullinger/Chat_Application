@@ -1,40 +1,76 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+This is a simple chat application I wrote in Python!
 
-{Provide a description the networking program that you wrote. Describe how to use your software.  If you did Client/Server, then you will need to describe how to start both.}
+Make sure you have python installed on all machines. You also need to get the IP address of the server machine. This is done by going into the terminal or command prompt and typing these commands:
 
-Make sure you have python installed on all machines. Choose a machine for the server. Download the file TCP_server.py to the machine. Then install TCP_client.py to the clients. After that run the TCP_server.py file on the server machine. Then run TCP_client.py on the clients. The client file will ask for your name, input it. Then type a message, the message will be sent to all of the clients on the server. There is also persistent storage in a history.txt file. 
+For a Linux machine use the command:
+```
+ip a
+```
 
-{Describe your purpose for writing this software.}
+In Windows use the command:
+```
+ipconfig
+```
 
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (you will need to show two pieces of software running and communicating with each other) and a walkthrough of the code.}
+Update the IP address in TCP_client.py to the IP address of the server.
+
+Choose a machine for the server. Download the file TCP_server.py to the machine. Then download TCP_client.py to the clients. After that run the TCP_server.py file on the server machine.
+Navigate to the directory that your python file is in the terminal, then run it using this command:
+```
+python TCP_server.py
+```
+or
+```
+python3 TCP_server.py
+```
+
+Navigate to the directory that the python file is in. Then run TCP_client.py on the clients.
+```
+python TCP_client.py
+```
+or
+```
+python3 TCP_client.py
+```
+
+The client file will ask for your name, input it. Then type a message, the message will be sent to all of the clients on the server. When a user connects, the server sends a message to all users.
+
+There is also persistent storage in a history.txt file. Any new clients can read the chat history. Any client can clear the chat history by typing "clear". Clients can also disconnect from the chat by typing "exit".
+
+I wanted to write this software to increase my skill in networks. So I decided to build a simple chat application in the terminal.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Network Communication
 
-{Describe the architecture that you used (client/server or peer-to-peer)}
+I used a client/server architrcture for the messaging app, This allows multiple users to connect and chat at the same time.
 
-{Identify if you are using TCP or UDP and what port numbers are used.}
+I used TCP and port 9999.
 
-{Identify the format of messages being sent between the client and server or the messages sent between two peers.}
+The format of messages sent between client and server are text-based messages encoded in UTF-8.
 
 # Development Environment
 
 {Describe the tools that you used to develop the software}
+I used Visual Studio code with the NeoVim extension on my Linux operating system. I chose a Debian operating system for the server and used NeoVim to write the server code. To test the software I used VirtualBox with a Windows virtual machine as another client and a Debian virtual machine as the server. I used my host machine as a client.
 
-{Describe the programming language that you used and any libraries.}
+I used Python as the programming languages.
+Libraries:
+os
+socket
+socketserver
+sys
+threading
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Python Socketserver Documentation](https://docs.python.org/3/library/socketserver.html)
+* [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Implement a way to close the server.
+* Add a way for users to privately message each other.
+* Only allow admins to clear the chat history.
