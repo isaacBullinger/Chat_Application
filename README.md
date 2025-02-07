@@ -2,7 +2,7 @@
 
 This is a simple chat application I wrote in Python!
 
-Make sure you have python installed on all machines. You also need to get the IP address of the server machine. This is done by going into the terminal or command prompt and typing these commands:
+Make sure you have Python installed on all machines. You also need to get the IP address of the server machine. This is done by going into the terminal or command prompt and typing these commands:
 
 For a Linux machine use the command:
 ```
@@ -53,7 +53,6 @@ The format of messages sent between client and server are text-based messages en
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
 I used Visual Studio code with the NeoVim extension on my Linux operating system. I chose a Debian operating system for the server and used NeoVim to write the server code. To test the software I used VirtualBox with a Windows virtual machine as another client and a Debian virtual machine as the server. I used my host machine as a client.
 
 I used Python as the programming languages.

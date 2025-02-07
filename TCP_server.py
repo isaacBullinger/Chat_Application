@@ -14,9 +14,10 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
         # Read the client's name first
         self.name = self.rfile.readline().strip().decode("utf-8")
         connection = f"[NEW CONNECTION] ({self.name}) connected"
-        print(connection)
 
+        # Send new connection message to all users
         self.broadcast_all(connection)
+        print(connection)
 
         # Send history to new users
         self.send_history()
@@ -26,7 +27,8 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
                 # Read message from the client
                 self.data = self.rfile.readline().strip()
                 if not self.data:
-                    break  # Disconnect if no data
+                    # Disconnect if no data
+                    break
 
                 # Format message with sender's name
                 message = self.data.decode('utf-8')
@@ -75,7 +77,7 @@ class MyTCPHandler(socketserver.StreamRequestHandler):
     
 
     def broadcast_all(self, message):
-        # Send a message to all connected clients except the sender
+        # Send a message to all connected clients
         formatted_message = message + "\n"
         for client in self.clients:
             client.wfile.write(bytes(formatted_message, "utf-8"))
